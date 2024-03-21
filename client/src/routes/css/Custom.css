@@ -1,0 +1,44 @@
+.contentProfile{
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+}
+.updateProfile{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 20px;
+}
+.headerUpdateProfile{
+    height: 25%;
+    width: 100%;
+    /* background-color: rgb(90, 59, 161); */
+    border-radius: 20px;
+    background-image: url('./tim1.jpg');;
+    
+}
+.background-image, .avatar{
+    position: absolute;
+}
+.avatar{
+    position: relative;
+    top: 90px;
+    left: 100px;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+}
+/* .background-image{
+    position: relative;
+    top: 0;
+    height: 300px;
+    width: 200px;
+    background-color: chartreuse;
+} */
+.formUpdateProfile{
+    background-color: #fff;
+    padding: 70px 70px 0px 70px;
+    border-radius: 20px;
+}

@@ -1,0 +1,48 @@
+.layoutRight {
+    display: flex;
+    flex-direction: column;
+}
+.layoutRight .topLayoutRight{
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    justify-content: center;
+    /* background-color: blue; */
+}
+.layoutRight .topLayoutRight .btnGroup{
+    position: relative;
+    left: 130px;
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 50%;
+}
+.layoutRight .topLayoutRight .btnGroup .btn1{
+    flex:2;
+    background-color: rgb(90, 59, 161);
+    border: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-color: #fff;
+}
+.layoutRight .topLayoutRight .btnGroup .btn2{
+    flex:1;
+    border: none;
+    background-color: rgb(69, 44, 130);
+    border-left-color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.layoutRight .centerLayoutRight{
+    height: 45%;
+}
+.layoutRight .lastLayoutRight{
+    height: 45%;
+}
+
+.dropdown-menu {
+    margin: 180px;
+    position: fixed;
+    top: -100px;
+    background-color: rgb(90, 59, 161);
+}

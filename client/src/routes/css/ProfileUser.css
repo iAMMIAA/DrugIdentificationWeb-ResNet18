@@ -1,0 +1,79 @@
+.profileUser {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  /* border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px; */
+}
+.profileUser .layoutSidebar{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  flex: 1;
+  align-items: center;
+}
+.profileUser .layoutSidebar .avaUser{
+  display: flex;
+  margin: 10px;
+  width: 90%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1)
+}
+.profileUser .layoutSidebar .avaUser img{
+  height: 100%;
+  width: 100%;
+  border-radius: 150px;
+  padding: 20px;
+}
+.profileUser .layoutSidebar .nameUser{
+  height: 50%;
+  width: 90%;
+  background-color: #fff;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileUser .layoutMain {
+  flex: 2;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+/* .profileUser .layoutMain .info-container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 600px;
+  margin: 20px 0px;
+}
+.profileUser .layoutMain .info-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profileUser .layoutMain .field {
+  margin-bottom: 10px;
+}
+
+.profileUser .layoutMain .label {
+  font-weight: bold;
+}  */
