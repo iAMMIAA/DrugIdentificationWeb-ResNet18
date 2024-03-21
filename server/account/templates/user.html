@@ -1,0 +1,167 @@
+<!-- {% load static %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="
+    " integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <link rel="stylesheet" href="css/user.css">
+    <title>User</title>
+</head>
+<body>
+    <section>
+        <header>
+            <h2><a href="#" class = "logo">LOGO</a></h2>
+            <div class="name-page">
+                <h1>PILL IDENTIFIER</h1>
+            </div>
+            <label for="check">
+                <i class="fas fa-bars menu-btn"></i>
+                <!-- <i class="fas fa-times close-btn"></i> -->
+            </label>
+        </header>
+        <main-content>
+            <div class="sidebar"> 
+                <div class="top">
+                    <div class="logo">
+                        <i class="fa fa-hospital fa-2x"></i>
+                        <span class="banner">PILL IDENTIFIER</span>
+                    </div>
+                    <i class="bx bx-menu" id="btn"></i>
+                </div>
+                <div class="user">
+                    <img src="static/css/zyz.jpg" alt="avt-user" class="user-img">
+                    <div>
+                        <p class="bold">User name</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-grid-alt"></i>
+                            <span class="nav-item">Dashboard</span>
+                        </a>
+                        <span class="tooltip">Dashboard</span>
+                    </li>
+                    <li>
+                        <a href="user/home/" id="btn-Home">
+                            <i class="bx bx-home"></i>
+                            <span class="nav-item">Home</span>
+                        </a>
+                            <span class="tooltip">Home</span>
+                    </li>
+                    <li>
+                        <a href="user/prescription/" id="btn-Prescription">
+                            <i class="fa fa-pills"></i>
+                            <span class="nav-item">Prescription</span>
+                        </a>
+                            <span class="tooltip">Prescription</span>
+                    </li>
+                    <li>
+                        <a href="user/settings/" id="btn-Settings">
+                            <i class="bx bx-cog"></i>
+                            <span class="nav-item">Settings</span>
+                        </a>
+                            <span class="tooltip">Settings</span>
+                    </li>
+                    <li>
+                        <a href="user/about/" id="btn-About">
+                            <i class="bx bxs-info-circle"></i>
+                            <span class="nav-item">About</span>
+                        </a>
+                            <span class="tooltip">About</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="primary-content" id="primary-content">
+            </div>
+        </main-content>
+    </section>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let btn = document.querySelector('#btn')
+    let sidebar = document.querySelector('.sidebar')
+    let contentDiv = document.getElementById('primary-content');
+
+    btn.onclick = function() {
+        sidebar.classList.toggle('active');
+    };
+    
+    //Home
+    // let homeLink = document.getElementById('btn-Home'); // Thay đổi lấy theo ID
+    // Đường dẫn của trang "home" 
+    // const homePageURL = 'http://127.0.0.1:8000/user/home/'; 
+    // homeLink.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     // Sử dụng Axios để tải nội dung trang "home"
+    //     axios.get(homePageURL)
+    //         .then(function (response) {
+    //             contentDiv.innerHTML = response.data; // Đặt nội dung vào div content
+    //         })
+    //         .catch(function (error) {
+    //             console.error(error);
+    //         });
+    // });
+
+    // homeLink.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     const signUp = new FormData(registrationForm);
+    //     axios.get('http://127.0.0.1:8000/user/home/')
+    //         .then((response) => { 
+    //             // window.location.href = 'user';
+    //         })
+    //         .catch((error) => {console.error(error);});
+    // })
+
+    //Prescription
+    // let prescriptionLink = document.getElementById('btn-Prescription'); 
+    // const prescriptionPageURL = 'http://127.0.0.1:8000/user/prescription/'; 
+    // prescriptionLink.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     axios.get(prescriptionPageURL)
+    //         .then(function (response) {
+    //             contentDiv.innerHTML = response.data; 
+    //         })
+    //         .catch(function (error) {
+    //             console.error(error);
+    //         });
+    // });
+
+    // //Settings
+    // let settingsLink = document.getElementById('btn-Settings');
+    // const settingsPageURL = 'http://127.0.0.1:8000/user/settings/'; 
+    // settingsLink.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     axios.get(settingsPageURL)
+    //         .then(function (response) {
+    //             contentDiv.innerHTML = response.data;
+    //         })
+    //         .catch(function (error) {
+    //             console.error(error);
+    //         });
+    // });
+
+    //About
+    // let aboutLink = document.getElementById('btn-About');
+    // const aboutPageURL = 'http://127.0.0.1:8000/user/about/'; 
+    // aboutLink.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     axios.get(aboutPageURL)
+    //         .then(function (response) {
+    //             contentDiv.innerHTML = response.data;
+    //         })
+    //         .catch(function (error) {
+    //             console.error(error);
+    //         });
+    // });
+
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication Recognition</title>
+    <style>
+        .content {
+            max-width: 500px;
+            margin: auto;
+        }
+        .bg-img{
+            width: 100%;
+            height: 100vh;
+            background-image:linear-gradient(rgba(122, 193, 244, 0.71),rgba(59, 99, 231, 0.7));
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-img">
+        <div class = "header">
+            <row style = "width: 100% ; display: flex; justify-content: center; color:rgb(255, 255, 255); background-color:rgb(10, 29, 66)">
+                <h1 class="header-text">Medication Recognition</h1>
+            </row>
+        </div>
+        <br>
+        <div class="content">
+            <div class = "loginForm" style = "width: 100% ; display: flex; justify-content: center;">
+                <form id="login" enctype="multipart/form-data">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username"><br><br>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"><br><br>
+
+                    <button type="submit">Login</button><br><br>
+                </form>
+                
+            </div>
+                        
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script>
+                const login = document.getElementById('login');
+            
+                login.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const signUp = new FormData(login);
+                    axios.post('http://127.0.0.1:8000/api/login/', signUp)
+                        .then((response) => { 
+                            window.location.href = 'home.html';
+                        })
+                        .catch((error) => {console.error(error);});
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

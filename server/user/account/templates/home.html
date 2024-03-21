@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <link rel="stylesheet" href="{% static 'css/user.css' %}">
+        <link rel="stylesheet" href="css/home.css">
+        <title>Home</title>
+        
+    </head>
+    <body>
+        <section>
+            <header>
+                <h2><a href="#" class = "logo">LOGO</a></h2>
+                <div class="name-page">
+                    <h1>PILL IDENTIFIER</h1>
+                </div>
+                <label for="check">
+                    <i class="fas fa-bars menu-btn"></i>
+                    <!-- <i class="fas fa-times close-btn"></i> -->
+                </label>
+            </header>
+            <main-content>
+                <div class="sidebar"> 
+                    <div class="top">
+                        <div class="logo">
+                            <i class="fa fa-hospital fa-2x"></i>
+                            <span class="banner">PILL IDENTIFIER</span>
+                        </div>
+                        <i class="bx bx-menu" id="btn"></i>
+                    </div>
+                    <div class="user">
+                        <img src="zyz.jpg" alt="avt-user" class="user-img">
+                        <div>
+                            <p class="bold">User name</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="bx bx-grid-alt"></i>
+                                <span class="nav-item">Dashboard</span>
+                            </a>
+                            <span class="tooltip">Dashboard</span>
+                        </li>
+                        <li>
+                            <a href="user/home/" id="btn-Home">
+                                <i class="bx bx-home"></i>
+                                <span class="nav-item">Home</span>
+                            </a>
+                                <span class="tooltip">Home</span>
+                        </li>
+                        <li>
+                            <a href="user/prescription/" id="btn-Prescription">
+                                <i class="fa fa-pills"></i>
+                                <span class="nav-item">Prescription</span>
+                            </a>
+                                <span class="tooltip">Prescription</span>
+                        </li>
+                        <li>
+                            <a href="user/settings/" id="btn-Settings">
+                                <i class="bx bx-cog"></i>
+                                <span class="nav-item">Settings</span>
+                            </a>
+                                <span class="tooltip">Settings</span>
+                        </li>
+                        <li>
+                            <a href="user/about/" id="btn-About">
+                                <i class="bx bxs-info-circle"></i>
+                                <span class="nav-item">About</span>
+                            </a>
+                                <span class="tooltip">About</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="primary-content" id="primary-content">
+                    <div class="bg-img">
+                        <div class = "uploadImage">
+                            <form class="drugForm" id="drugForm" enctype="multipart/form-data">
+                                <input type="file" id="imageInput" name="image"> <br>
+                                <button type="submit">Upload</button><br><br>
+                                <row style = "width: 100% ; display: flex; justify-content: center;">
+                                    <img id="drugImage">
+                                </row><br>
+                                <button class="button" type="button" id="checkButton" style="color:rgb(220, 221, 224); background-color: rgb(10, 29, 66);">CheckDrug</button>
+                            </form>
+                        </div>
+                        <div class = "result">
+                            <row style = "width: 100% ; display: flex; justify-content: center;">
+                                <p id="decor"><h1 id="result"></h1></p>
+                            </row>
+                        </div>
+                    </div>
+                </div>
+            </main-content>
+        </section>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active')
+        }
+
+        const drugForm = document.getElementById('drugForm');
+        const resultDiv = document.getElementById('result');
+        const fileImage = document.getElementById('fileIm');
+        const checkButton = document.getElementById('checkButton');
+        const drugImage = document.getElementById('drugImage');
+        const decor = document.getElementById('decor');
+        var nameDrug;
+
+        drugForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(drugForm);
+            axios.post('http://127.0.0.1:8000/api/create/', formData)
+                .then((response) => {
+                    const drug = response.data;
+                    const idDrug = drug.idDrug;
+                    const fileImages = drug.picture;
+                    const linkImage = `http://127.0.0.1:8000${fileImages}/`;
+                    const idEndpoint = `http://127.0.0.1:8000/api/detail/${idDrug}/`;
+                    drugImage.src = linkImage;
+                    
+                    // resultDiv.innerHTML = idDrug;                            
+                    // fileImage.innerHTML = linkImage;
+                    checkButton.addEventListener('click', () => {
+                        // e.defaultPrevented();
+                        axios.get(idEndpoint)
+                            .then((response) => {
+                                const drug = response.data;
+                                decor.innerHTML = `The medication is: `;
+                                resultDiv.innerHTML = ` ${drug.name}`;
+                            })
+                            .catch((error) => {
+                                // Handle error
+                                console.error(error);
+                            });
+                    });
+
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
+    </script>
+
+</html>

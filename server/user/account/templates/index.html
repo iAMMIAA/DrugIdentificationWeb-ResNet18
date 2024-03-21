@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication Recognition</title>
+    <style>
+        .bg-img{
+            width: 100%;
+            height: 100vh;
+            background-image:linear-gradient(rgba(195, 226, 248, 0.71),rgba(115, 145, 244, 0.7));
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-img">
+        <div class = "header">
+            <row style = "width: 100% ; display: flex; justify-content: center; color:rgb(255, 255, 255); background-color:rgb(10, 29, 66)">
+                <h1 class="header-text">Medication Recognition</h1>
+            </row>
+        </div>
+        <div class = "registerForm">
+            <div class="content">
+                <div style = "width: 100% ; display: flex; justify-content: center;">
+                    <form id="registrationForm" enctype="multipart/form-data">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"><br><br>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email"><br><br>
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password"><br><br>
+                        <button type="submit">Register</button> 
+                    </form>
+                </div>
+                <div style = "width: 100% ; display: flex; justify-content: center;">
+                    <button id="loginButton" type="click">Login</button><br><br>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                <script>
+                    const registrationForm = document.getElementById('registrationForm');
+                    const loginButton = document.getElementById('loginButton');
+
+                    loginButton.addEventListener('click', () => {
+                        window.location.href = 'login.html';
+                    })
+                    registrationForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        const signUp = new FormData(registrationForm);
+                        axios.post('http://127.0.0.1:8000/api/register/', signUp)
+                            .then((response) => { 
+                                window.location.href = 'home.html';
+                            })
+                            .catch((error) => {console.error(error);});
+                    });      
+                </script>
+            </div>
+        </div>        
+    </div>
+</body>
+</html>
+
+
+
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="intro.css">
+    <title>PILL IDENTIFIER</title>
+</head>
+<body>
+    <section>
+        <input type="checkbox" id="check">
+        <header>
+            <h2><a href="#" class = "logo">LOGO</a></h2>
+            <div class="navigation">
+                <a href="#" id="btn-SignIn">Sign Up</a>
+                <a href="#" id="btn-LogIn">Login</a>
+                <a href="#">Forgot password</a>
+            </div>
+            <label for="check">
+                <i class="fas fa-bars menu-btn"></i>
+                <i class="fas fa-times close-btn"></i>
+            </label>
+        </header>
+        <main-content>
+            <div class="body">
+                <div class="content">
+                    <div class="info">
+                        <h2>PILL <br><span>IDENTIFIER!</span></h2>
+                        <p>Using drugs is a necessity, in order to support patients with decline or treatment of diseases. However, the use of drugs does not always bring complete benefits, for example: drug overdose, inappropriate use of drugs, abuse of drugs, ... and cannot be. not to mention the wrong medication. According to the World Health Organization (WHO), one-third of all drug-related deaths are caused by patient misuse. Therefore, there is a need for applications to assist in determining the right drugs for patients. Based on images, having an app help identify medications can also help reduce a patient's time and effort in finding drug information, and assist healthcare professionals in making informed decisions. accurate diagnosis and treatment.</p>
+                        <a href="#" class="info-btn">More Infomation</a>
+                    </div>
+                </div>
+                <div class="form-signin">
+                    <form class="registrationForm" id="registrationForm" enctype="multipart/form-data">
+                        <input type="text" id="username" placeholder="Username" name="username"><br><br>
+                        
+                        <input type="email" id="email" placeholder="Email" name="email"><br><br>
+                        
+                        <input type="password" id="password" placeholder="Password" name="password"><br><br>
+                        <button type="submit">Register</button> 
+                    </form>
+                </div>
+                <div class="login">   
+                    <form id="login-Form" class="login-Form" enctype="multipart/form-data">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" placeholder="Username" name="username"><br><br>
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Password" name="password"><br><br>
+                        <button type="submit">Login</button><br><br>
+                    </form>
+                </div>
+            </div>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </main-content>        
+    </section>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const registrationForm = document.getElementById('registrationForm');
+    let btn = document.querySelector('#btn-SignIn')
+    let signin = document.querySelector('.form-signin')
+    let btnLogIn = document.querySelector('#btn-LogIn')
+    let logIn = document.querySelector('.login')
+
+    btn.onclick = function() {
+        signin.classList.toggle('active');
+        logIn.classList.remove('active');
+    };    
+
+    btnLogIn.onclick = function() {
+        logIn.classList.toggle('active');
+        signin.classList.remove('active');
+    };
+
+    registrationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const signUp = new FormData(registrationForm);
+        axios.post('http://127.0.0.1:8000/api/register/', signUp)
+            .then((response) => { 
+                window.location.href = 'home.html';
+                console.log('Succesful!');
+            })
+            .catch((error) => {console.error(error);});
+    })
+</script>
+</html> -->

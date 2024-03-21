@@ -1,0 +1,652 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(hospital\(2\).jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+main-content{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    color: #000;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+header .navigation a:not(:last-child) {
+    margin-right: 30px;
+}
+header .navigation a:hover{
+    background: #fff;
+}
+.content{
+    max-width: 800px;
+    margin: 80px 100px;
+}
+.content .info h2{
+    color: rgb(37, 52, 98);
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 30px;
+}
+.content .info h2 span{
+    color: rgb(37, 52, 98);
+    font-size: 50px;
+    font-weight: 600;
+}
+.content .info p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+
+    border-radius: 20px;
+    padding: 30px;
+}
+.content .info-btn{
+    color: #fff;
+    background: rgb(37, 52, 98);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+.content .info-btn:hover{
+    background: #47688da4;
+}
+
+.media-icons{
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    margin: auto;
+}
+.media-icons a{
+    position: relative;
+    color: #37518e;
+    transition: 0.3s;
+    transition-property: transform;
+}
+.media-icons a:not(:last-child){
+    margin-right: 60px;
+}
+.media-icons a:hover{
+    transform: scale(1.5);
+}
+
+label{
+    display: none;
+}
+#check{
+    z-index: 3;
+    display: none;
+}
+
+@media (max-width: 960px) {
+    header .navigation {
+        display: none;
+    }
+    label{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        transition-property: color;
+    }
+    label:hover{
+        color: #fff;
+    }
+    label .close-btn{
+        display: none;
+    }
+    #check:checked ~header .navigation{
+        z-index: 2;
+        position: fixed;
+        background: rgba(118, 179, 249, 0.888);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    #check:checked ~ header .navigation a{
+        font-weight: 700;
+        margin-right: 0;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+    #check:checked ~ header label .menu-btn{
+        display: none;
+    }
+    #check:checked ~header label .close-btn{
+        z-index: 2;
+        display: block;
+        position: fixed;
+
+    }
+    label .menu-btn{
+        position: absolute;
+
+    }
+    header .logo{
+        position: absolute;
+        bottom: -6px;
+    }
+
+   
+    .content .info h2{
+        font-size: 45px;
+        line-height: 50px;
+    }
+    .content .info h2 span{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .content .info p{
+        font-size: 14px;
+    }
+    .form-signin{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 560px) {
+    .content .info h2{
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .content .info h2 span{
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .content .info p{
+        font-size: 14px;
+    }
+}
+
+.body {
+    display: flex; Sử dụng flexbox để xếp các phần tử con 
+    width: 100%; Đảm bảo .body chiếm toàn bộ chiều rộng của phần tử cha 
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-signin{
+    max-width: 600;
+    margin: 60px 100px;
+    opacity: 0; /* Bắt đầu ở mức độ không nhìn thấy 
+    transition: opacity 0.3s ease-in-out; /* Hiệu ứng transition 
+    display: none;
+
+}
+.form-signin .registrationForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.form-signin .registrationForm input{
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 15px;
+    border:#000;
+    background-color: rgba(161, 197, 251, 0.26);
+}
+.form-signin .registrationForm button {
+    width: 200px;
+    border-radius: 25px;
+    border: 1px solid #237af500;
+    background-color: rgb(37, 52, 98);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+   
+}
+.form-signin .registrationForm button:hover {
+    transform: scale(1.2);
+}
+.form-signin.active {
+    display: block;
+    opacity: 1;
+}
+
+
+.login{
+    max-width: 600;
+    margin: 60px 100px;
+    opacity: 0; Bắt đầu ở mức độ không nhìn thấy 
+    transition: opacity 0.3s ease-in-out; Hiệu ứng transition
+    display: none;
+
+}
+.login .login-Form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.login .login-Form input{
+    border-radius: 20px;
+    width: 190px;
+    height: 40px;
+    padding: 15px;
+    border:#000;
+    background-color: rgba(161, 197, 251, 0.26);
+}
+.login .login-Form button {
+    border-radius: 25px;
+    border: 1px solid #237af500;
+    background-color: rgb(37, 52, 98);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+.login.active {
+    display: block;
+    opacity: 1;
+}
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(hospital\(2\).jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+main-content{
+    width: 100%;
+    height: 100vh;
+
+    /* insert */
+    display: flex;
+    flex-direction: column;
+}
+header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    color: #000;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+header .navigation a:not(:last-child) {
+    margin-right: 30px;
+}
+header .navigation a:hover{
+    background: #fff;
+}
+/* .content{
+    max-width: 650px;
+    margin: 60px 100px;
+} */
+.content{
+    max-width: 800px;
+    margin: 80px 100px;
+}
+.content .info h2{
+    color: rgb(37, 52, 98);
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 30px;
+}
+.content .info h2 span{
+    color: rgb(37, 52, 98);
+    font-size: 50px;
+    font-weight: 600;
+}
+.content .info p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    /* background-color: #d2e5fb; */
+    border-radius: 20px;
+    padding: 30px;
+}
+.content .info-btn{
+    color: #fff;
+    background: rgb(37, 52, 98);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+.content .info-btn:hover{
+    background: #47688da4;
+}
+
+.media-icons{
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    margin: auto;
+}
+.media-icons a{
+    position: relative;
+    color: #37518e;
+    transition: 0.3s;
+    transition-property: transform;
+}
+.media-icons a:not(:last-child){
+    margin-right: 60px;
+}
+.media-icons a:hover{
+    transform: scale(1.5);
+}
+
+label{
+    display: none;
+}
+#check{
+    z-index: 3;
+    display: none;
+}
+
+@media (max-width: 960px) {
+    header .navigation {
+        display: none;
+    }
+    label{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        transition-property: color;
+    }
+    label:hover{
+        color: #fff;
+    }
+    label .close-btn{
+        display: none;
+    }
+    #check:checked ~header .navigation{
+        z-index: 2;
+        position: fixed;
+        background: rgba(118, 179, 249, 0.888);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    #check:checked ~ header .navigation a{
+        font-weight: 700;
+        margin-right: 0;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+    #check:checked ~ header label .menu-btn{
+        display: none;
+    }
+    #check:checked ~header label .close-btn{
+        z-index: 2;
+        display: block;
+        position: fixed;
+
+    }
+    label .menu-btn{
+        position: absolute;
+
+    }
+    header .logo{
+        position: absolute;
+        bottom: -6px;
+    }
+
+    /* .content .info p{
+        font-size: 14px;
+    } */
+    .content .info h2{
+        font-size: 45px;
+        line-height: 50px;
+    }
+    .content .info h2 span{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .content .info p{
+        font-size: 14px;
+    }
+    .form-signin{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 560px) {
+    .content .info h2{
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .content .info h2 span{
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .content .info p{
+        font-size: 14px;
+    }
+}
+
+.body {
+    display: flex; /* Sử dụng flexbox để xếp các phần tử con */
+    width: 100%; /* Đảm bảo .body chiếm toàn bộ chiều rộng của phần tử cha */
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-signin{
+    max-width: 600;
+    margin: 60px 100px;
+    opacity: 0; /* Bắt đầu ở mức độ không nhìn thấy */
+    transition: opacity 0.3s ease-in-out; /* Hiệu ứng transition */
+    display: none;
+
+}
+.form-signin .registrationForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.form-signin .registrationForm input{
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 15px;
+    border:#000;
+    background-color: rgba(161, 197, 251, 0.26);
+}
+.form-signin .registrationForm button {
+    width: 200px;
+    border-radius: 25px;
+    border: 1px solid #237af500;
+    background-color: rgb(37, 52, 98);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    /* transition: 0.3s; */
+    /* transform: scale(1.5); */
+}
+/* .form-signin .registrationForm button:not(:last-child){
+    margin-right: 60px;
+} */
+.form-signin .registrationForm button:hover {
+    transform: scale(1.2);
+}
+.form-signin.active {
+    display: block;
+    opacity: 1;
+}
+
+
+.login{
+    max-width: 600;
+    margin: 60px 100px;
+    opacity: 0; /* Bắt đầu ở mức độ không nhìn thấy */
+    transition: opacity 0.3s ease-in-out; /* Hiệu ứng transition */
+    display: none;
+
+}
+.login .login-Form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.login .login-Form input{
+    border-radius: 20px;
+    width: 190px;
+    height: 40px;
+    padding: 15px;
+    border:#000;
+    background-color: rgba(161, 197, 251, 0.26);
+}
+.login .login-Form button {
+    border-radius: 25px;
+    border: 1px solid #237af500;
+    background-color: rgb(37, 52, 98);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+.login.active {
+    display: block;
+    opacity: 1;
+}
+
